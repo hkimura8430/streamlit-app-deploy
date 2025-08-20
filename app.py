@@ -14,14 +14,15 @@ selected_item = st.radio(
     ["A:観光スポットに詳しい専門家", "B:グルメに詳しい専門家"]
 )
 
-#LLMに投げるプロンプトを受け取る
+# LLMに投げるプロンプトを受け取る
 input_message = st.text_input(label="質問を入力してください")
 
-#LangChainを使ってLLMにプロンプトを渡す
+# LangChainを使ってLLMにプロンプトを渡す
 if st.button("実行"):
     llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
     messages = [
-    SystemMessage(content=selected_item),
-    HumanMessage(content=input_message),]
+        SystemMessage(content=selected_item),
+        HumanMessage(content=input_message),
+    ]
     result = llm(messages)
     st.write(result.content)
