@@ -25,6 +25,3 @@ if st.button("実行"):
     HumanMessage(content=input_message),]
     result = llm(messages)
     st.write(result.content)
-
-
-
