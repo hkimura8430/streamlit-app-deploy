@@ -1,7 +1,9 @@
 import streamlit as st
 from langchain_openai import ChatOpenAI
 from langchain.schema import SystemMessage, HumanMessage
+from dotenv import load_dotenv
 
+load_dotenv()
 st.title("旅行チャットボット")
 st.write("##### 希望の専門家を選択してください")
 st.write("A:観光スポットに詳しい専門家")
@@ -22,7 +24,7 @@ if st.button("実行"):
     SystemMessage(content=selected_item),
     HumanMessage(content=input_message),]
     result = llm(messages)
-    return result.content
+    st.write(result.content)
 
 
 
